@@ -1,0 +1,74 @@
+import { useState } from "react";
+
+const Login = () => {
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [error, setError] = useState(null);
+    const [success, setSuccess] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        setIsLoading(true);
+        setError(null);
+        setSuccess(false);
+
+        const user = { email, password };
+
+        try {
+            const response = await fetch('http://localhost:4000/api/users/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(user),
+            });
+
+            const json = await response.json();
+
+            if (!response.ok) {
+                setError(json.error);
+                setSuccess(false);
+            } else {
+                setEmail('');
+                setPassword('');
+                setError(null);
+            }
+        } catch (err) {
+            setError('La connexion au serveur a échoué. Veuillez réessayer plus tard.');
+            setSuccess(false);
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    return (
+        <form className="create-user" onSubmit={handleSubmit}>
+            <h2>Créer un nouvel utilisateur</h2>
+
+            <label>Adresse e-mail :</label>
+            <input 
+                type="email" 
+                onChange={(e) => setEmail(e.target.value)} 
+                value={email}
+                required
+            />
+
+            <label>Mot de passe :</label>
+            <input 
+                type="password" 
+                onChange={(e) => setPassword(e.target.value)} 
+                value={password}
+                required
+            />
+            <button disabled={isLoading}>
+                {isLoading ? 'Création en cours...' : 'Créer un utilisateur'}
+            </button>
+
+            {error && <div className="error">{error}</div>}
+            {success && <div className="success">Utilisateur créé avec succès !</div>}
+        </form>
+    );
+};
+
+export default Login;
