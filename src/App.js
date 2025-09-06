@@ -9,7 +9,7 @@ import Login from './pages/login/login';
 import Dashboard from './pages/dashboards/client-dashboard/client-dashboard';
 function App() {
   return (
-    <div className="App login-page">
+    <div className="App">
       <BrowserRouter>
         <Routes>
           {/* Route pour la page de création d'utilisateur */}

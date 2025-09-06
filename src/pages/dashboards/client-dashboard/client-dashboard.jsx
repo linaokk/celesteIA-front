@@ -36,6 +36,16 @@ const Dashboard = () => {
   // }
 
   return (
+    // <div className="mt-5">
+    //   <HeaderNav />
+    //   <div className="boxes d-flex flex-lg-row flex-column justify-content-between gap-3 mx-3 my-5">
+    //     {cardsData && cardsData.map((card) => (
+    //       <Card key={card.id} data={card} />
+    //     ))}
+    //   </div>
+    //   <Faqs />
+    //   <Vocals />
+    // </div>
     <div>
       <HeaderNav />
       <div className="boxes d-flex flex-lg-row flex-column justify-content-between gap-3 mx-3 my-5">

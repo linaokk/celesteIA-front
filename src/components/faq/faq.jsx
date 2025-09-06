@@ -49,7 +49,7 @@ const Faqs = () => {
             </div>
           </div>
           <div className="bar-body mb-1">
-            <div className="progress" style={{ height: "8px" }}>
+            <div className="progress" style={{ height: "6px" }}>
               <div
                 className="progress-bar custom-progress"
                 role="progressbar"
@@ -97,7 +97,7 @@ const Faqs = () => {
             </div>
           </div>
           <div className="bar-body mb-1">
-            <div className="progress" style={{ height: "8px" }}>
+            <div className="progress" style={{ height: "6px" }}>
               <div
                 className="progress-bar custom-progress"
                 role="progressbar"
@@ -145,7 +145,7 @@ const Faqs = () => {
             </div>
           </div>
           <div className="bar-body mb-1">
-            <div className="progress" style={{ height: "8px" }}>
+            <div className="progress" style={{ height: "6px" }}>
               <div
                 className="progress-bar custom-progress"
                 role="progressbar"

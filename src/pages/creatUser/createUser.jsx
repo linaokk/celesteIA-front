@@ -72,7 +72,8 @@ const CreateUser = () => {
     //     </button>
     //     {error && <div className="error">{error}</div>}
     // </form>
-    <div className="card login-card p-4 bg-glass">
+    <div className="login-page">
+      <div className="card login-card p-4 bg-glass">
       <div className="text-center mb-4">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -160,6 +161,7 @@ const CreateUser = () => {
           Sign in
         </a>
       </p>
+    </div>
     </div>
   );
 };

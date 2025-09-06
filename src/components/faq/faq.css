@@ -45,6 +45,7 @@
 }
 .custom-progress {
     background-color: rgb(81, 47, 235);
+    height: 8px;
 }
 .btn-export {
     background-color: rgb(81, 47, 235);
