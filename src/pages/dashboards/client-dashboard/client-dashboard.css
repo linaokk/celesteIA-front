@@ -1,0 +1,23 @@
+/* Styles pour le dashboard client */
+.boxes {
+  display: flex;
+  gap: 1rem;
+  margin: 1.5rem;
+}
+
+/* Assurer que les cartes sont visibles */
+.boxes .card {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 1rem;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Responsive pour les cartes */
+@media (max-width: 768px) {
+  .boxes {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

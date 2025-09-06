@@ -1,13 +1,17 @@
 import { useState } from 'react';
+import { SIGNUP_ENDPOINT } from '../constants/serverApi';
+import { useAuthContext } from './useAuthContext';
 export const useSignup = () => {
     const [error, setError] = useState(null);
     const [isLoading, setIsLoading] = useState(false);
-
+    const [success, setSuccess] = useState(false);
+    const { dispatch } = useAuthContext();
     const signup = async (email, password, phoneNumber, companyName) => {
         setIsLoading(true);
         setError(null);
+        setSuccess(false);
 
-        const response = await fetch('http://localhost:4000/api/users/signup', {
+        const response = await fetch(SIGNUP_ENDPOINT, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ email, password, phoneNumber, companyName })
@@ -17,11 +21,15 @@ export const useSignup = () => {
         if (!response.ok) {
             setIsLoading(false);
             setError(json.error);
+            setSuccess(false);
         }
         if (response.ok) {
-            // Inscription réussie
+            localStorage.setItem('user', JSON.stringify(json));
+            dispatch({ type: 'LOGIN', payload: json });
             setIsLoading(false);
             setError(null);
+            setSuccess(true);
         }
     }
+    return { signup, isLoading, error, success };
 }   
