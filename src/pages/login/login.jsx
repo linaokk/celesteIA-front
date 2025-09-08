@@ -41,7 +41,7 @@ const Login = () => {
           <h4 className="fw-bold text-white">Celeste IA</h4>
         </div>
 
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} autoComplete="off">
           <div className="mb-3">
             <div className="input-group">
               <input
@@ -51,6 +51,7 @@ const Login = () => {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder=""
+                autoComplete="new-email"
                 required
               />
               <label htmlFor="email">Adresse e-mail</label>
@@ -66,6 +67,7 @@ const Login = () => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder=""
+                autoComplete="off"
                 required
               />
               <label htmlFor="password">Mot de passe</label>
@@ -91,13 +93,29 @@ const Login = () => {
             </a>
           </div>
 
-          <button
+          {/* <button
             type="submit"
             disabled={isLoading}
             className="btn-login fw-bold w-100"
           >
             {isLoading ? "Login en cours..." : "Login"}
+          </button> */}
+
+          <button
+            type="submit"
+            disabled={isLoading}
+            className="btn-login fw-bold w-100 d-flex align-items-center justify-content-center"
+          >
+            {isLoading ? (
+              <>
+                <i className="bi bi-arrow-repeat spin me-2 fs-6 fw-bold"></i>
+                Connexion...
+              </>
+            ) : (
+              "Login"
+            )}
           </button>
+
         </form>
 
         {error && (
