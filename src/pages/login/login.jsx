@@ -23,6 +23,7 @@ const Login = () => {
     login(email, password);
   };
 
+
   return (
     <div className="login-page">
       <div className="card login-card p-4 bg-glass w-100">
@@ -43,19 +44,26 @@ const Login = () => {
 
         <form onSubmit={handleSubmit} autoComplete="off">
           <div className="mb-3">
-            <div className="input-group">
+            <div className="input-group mb-0">
               <input
                 type="email"
                 id="email"
-                name="email"
+                name="user_log"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder=""
-                autoComplete="new-email"
+                autoComplete="off"
                 required
+                className={error ? "is-invalid" : ""}
               />
               <label htmlFor="email">Adresse e-mail</label>
             </div>
+            {error && (
+              <div className="alert alert-danger bg-transparent border-0 m-0 p-0 mt-1 ms-2 d-flex align-items-center" role="alert">
+                <i class="bi bi-exclamation-circle flex-shrink-0 me-2"></i>
+                <small>{error}</small>
+              </div>
+            )}
           </div>
 
           <div className="mb-3">
@@ -63,11 +71,11 @@ const Login = () => {
               <input
                 type="password"
                 id="password"
-                name="password"
+                name="user_secret"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 placeholder=""
-                autoComplete="off"
+                autoComplete="new-pass"
                 required
               />
               <label htmlFor="password">Mot de passe</label>
@@ -118,11 +126,11 @@ const Login = () => {
 
         </form>
 
-        {error && (
+        {/* {error && (
           <div className="alert alert-danger mt-3" role="alert">
             {error}
           </div>
-        )}
+        )} */}
 
         <p className="text-center mt-3 mb-0 small text-white opacity-75">
           Don't have an account?{" "}

@@ -126,3 +126,33 @@
         transform: rotate(360deg);
     }
 }
+
+/* Chrome / Edge */
+input:-webkit-autofill {
+  background-color: #171717 !important;
+  -webkit-box-shadow: 0 0 0px 1000px #171717 inset !important;
+  -webkit-text-fill-color: #fff !important;
+  border: 1px solid #fff !important; /* keep your border style */
+}
+
+/* Firefox */
+input:-moz-autofill {
+  background-color: #171717 !important;
+  color: #fff !important;
+}
+
+.input-group input.is-invalid {
+  border-color: #58151c;
+}
+
+.input-group input.is-invalid:focus {
+  box-shadow: 0 0 0 0.2rem rgba(220,53,69,.25);
+}
+
+.input-group input.is-invalid + label {
+  color: #58151c; /* red label */
+}
+
+.input-group input.is-invalid:focus {
+    box-shadow: none !important;
+}
