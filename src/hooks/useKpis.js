@@ -21,6 +21,7 @@ const fetchWithAuth = async (url, token) => {
 // - averageCallCost: { callsCount: number, pricingMode: string, totalCost: number, averageCost: number }
 export const useKpis = () => {
   const { user } = useAuthContext();
+  console.log("user in useKpi", user)
   const authToken = user?.token;
   const agentId = user?.agentId;
 console.log(agentId);
@@ -66,7 +67,7 @@ console.log(agentId);
             badgeColor: 'bg-warning',
             title: 'Coût moyen par appel',
             value: `${res.averageCost.toFixed(2)}`,
-            description: 'Euro par appel',
+            description: 'euro par appel',
           },
           {
             id: 4,
