@@ -15,6 +15,7 @@ const Login = () => {
 
   //Naviguer vers le dashboard si l'utilisateur est déjà connecté
   useEffect(() => {
+    if(user)
     navigate(user?.userRole === USER_ROLE? USER_DASHBOARD_ROUTE : ADMIN_DASHBOARD_ROUTE);
   }, [user, navigate]);
 
