@@ -15,12 +15,14 @@ const Login = () => {
 
   //Naviguer vers le dashboard si l'utilisateur est déjà connecté
   useEffect(() => {
+    console.log("user in login ", user)
+    if(user)
     navigate(user?.userRole === USER_ROLE? USER_DASHBOARD_ROUTE : ADMIN_DASHBOARD_ROUTE);
   }, [user, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    login(email, password);
+    await login(email, password);
   };
 
 

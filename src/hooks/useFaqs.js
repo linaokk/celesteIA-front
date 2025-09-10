@@ -14,7 +14,11 @@ export const useFaqs = () => {
 
     const fetchFaqs = async () => {
       try {
-        const res = await axios.get(`${FAQ_DASHBOARD_SERVER_ENDPOINT}?agentId=${user.agentId}`);
+        const res = await axios.get(`${FAQ_DASHBOARD_SERVER_ENDPOINT}?agentId=${user.agentId}`, {
+          headers: {
+            Authorization: `Bearer ${user.token}`, // 🔑 ajoute le token ici
+          },
+        });
         setFaqs(res.data.faq.questions || []);
       } catch (err) {
         setError(err.message || "Erreur lors du chargement des FAQs");

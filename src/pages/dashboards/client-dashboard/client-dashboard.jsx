@@ -16,24 +16,6 @@ const Dashboard = () => {
     return <LoadingPage companyName={user?.userCompanyName || "Votre entreprise"} />;
   }
 
-  // Show error state
-  // if (error) {
-  //   return (
-  //     <div className="min-vh-100 d-flex align-items-center justify-content-center bg-light">
-  //       <div className="text-center">
-  //         <i className="bi bi-exclamation-triangle text-danger" style={{ fontSize: "4rem" }}></i>
-  //         <h2 className="mt-3 text-danger">Erreur de chargement</h2>
-  //         <p className="text-muted">{error}</p>
-  //         <button 
-  //           className="btn btn-primary mt-3" 
-  //           onClick={() => window.location.reload()}
-  //         >
-  //           Réessayer
-  //         </button>
-  //       </div>
-  //     </div>
-  //   );
-  // }
 
   return (
     // <div className="mt-5">
