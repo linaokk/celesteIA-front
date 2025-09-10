@@ -62,7 +62,7 @@ console.log(agentId);
           },
           {
             id: 3,
-            icon: 'bi-currency-dollar',
+            icon: 'bi-currency-euro',
             badgeColor: 'bg-warning',
             title: 'Coût moyen par appel',
             value: `${res.averageCost.toFixed(2)}`,

@@ -30,8 +30,6 @@ html, body {
   display: flex;
   flex-wrap: wrap; /* optional, keeps cards wrapping if many */
 
-  height: 100vh;  /* full height of viewport */
-
   gap: 1rem;
   margin: 0;      /* remove extra spacing */
   padding: 1.5rem;

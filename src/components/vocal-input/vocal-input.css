@@ -17,21 +17,6 @@
         font-size: 0.8rem;
     }
 }
-.glass-card {
-    background: linear-gradient(135deg,
-            #171717 80%,
-            rgb(81, 47, 235) 100%);
-    background-size: 200% 200%;
-    background-position: 0% 50%;
-    animation: moveGradient 5s ease-in-out infinite alternate;
-    background-clip: padding-box;
-    border-radius: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
-    backdrop-filter: blur(50px);
-    -webkit-backdrop-filter: blur(50px);
-    color: #fff;
-}
 @keyframes moveGradient {
     0% {
         background-position: 50% 100%;
