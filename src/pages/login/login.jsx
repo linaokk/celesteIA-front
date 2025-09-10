@@ -13,10 +13,10 @@ const Login = () => {
   const navigate = useNavigate();
   const { user } = useAuthContext();
 
-  // Naviguer vers le dashboard si l'utilisateur est déjà connecté
-  // useEffect(() => {
-  //   navigate(user?.userRole === USER_ROLE? USER_DASHBOARD_ROUTE : ADMIN_DASHBOARD_ROUTE);
-  // }, [user, navigate]);
+  //Naviguer vers le dashboard si l'utilisateur est déjà connecté
+  useEffect(() => {
+    navigate(user?.userRole === USER_ROLE? USER_DASHBOARD_ROUTE : ADMIN_DASHBOARD_ROUTE);
+  }, [user, navigate]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();

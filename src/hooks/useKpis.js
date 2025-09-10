@@ -66,7 +66,7 @@ console.log(agentId);
             badgeColor: 'bg-warning',
             title: 'Coût moyen par appel',
             value: `${res.averageCost.toFixed(2)}`,
-            description: 'dirhams par appel',
+            description: 'Euro par appel',
           },
           {
             id: 4,
