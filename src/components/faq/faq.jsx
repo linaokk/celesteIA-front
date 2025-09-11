@@ -1,7 +1,7 @@
 import { useState, React, useRef, useEffect } from "react";
 import { useFaqs } from "../../hooks/useFaqs";
 import "./faq.css";
-
+import { useReports } from "../../hooks/useReports"; 
 const Faqs = ({ options, selected, onChange }) => {
   const months = [
     "January", "February", "March", "April", "May", "June",
@@ -12,6 +12,7 @@ const Faqs = ({ options, selected, onChange }) => {
 
   const [selectedMonth, setSelectedMonth] = useState("");
   const [selectedYear, setSelectedYear] = useState();
+    const { reports, getReportByDate, downloadPDF } = useReports();
   const pickerRef = useRef(null);
   const { faqs, loading, error } = useFaqs();
   const [showHistory, setShowHistory] = useState(false);
@@ -26,11 +27,12 @@ const Faqs = ({ options, selected, onChange }) => {
   const [year, setYear] = useState("");
   const [validated, setValidated] = useState(false);
 
-  const handleValidate = () => {
-    if (month && year) {
-      setValidated(true);
+  const handleDownloadPDF = () => {
+    const report = getReportByDate(month, year);
+    if (report) {
+      downloadPDF(report.pdfData, `rapport-${month}-${year}.pdf`);
     } else {
-      setValidated(false); // ensures it's hidden if not valid
+      alert("Aucun rapport trouvé pour cette période");
     }
   };
   useEffect(() => {
@@ -43,10 +45,6 @@ const Faqs = ({ options, selected, onChange }) => {
 
 
 
-  const handleDownloadPDF = () => {
-    // 👇 replace this with your real PDF generation logic
-    alert(`Downloading PDF for ${month}/${year}`);
-  };
 
   useEffect(() => {
     if (showHistory && monthRef.current) {
@@ -165,7 +163,7 @@ const Faqs = ({ options, selected, onChange }) => {
                 {/* Download button appears only if validated */}
                 {validated && (
                   <div className="text-center">            
-                    <button className="btn-export">
+                    <button className="btn-export" onClick={handleDownloadPDF}>
                       <div className="content">
                         <i className="bi bi-file-earmark-pdf"></i>
                         <span>Download PDF</span>
