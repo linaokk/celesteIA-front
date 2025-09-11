@@ -1,4 +1,3 @@
-import React from "react";
 import "./cards.css";
 
 const Card = ({ data }) => {

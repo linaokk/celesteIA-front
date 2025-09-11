@@ -35,7 +35,6 @@ console.log(agentId);
   
   useEffect(() => {
     const load = async () => {
-      // Ne pas charger les KPIs si l'agentId n'est pas disponible
       if (!agentId) {
         setIsLoading(false);
         return;

@@ -1,4 +1,3 @@
-// src/hooks/useReports.js
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useAuthContext } from "./useAuthContext";
@@ -34,14 +33,12 @@ useEffect(() => {
   fetchReports();
 }, [user, reports.length]);
 
-  // Filtrer un rapport par mois/année
   const getReportByDate = (month, year) => {
     const formattedMonth = String(month).padStart(2, "0"); 
     const searchKey = `${year}-${formattedMonth}`;
     return reports.find((r) => r.month === searchKey);
   };
 
-  // Télécharger un PDF
   const downloadPDF = (pdfBase64, fileName = "rapport.pdf") => {
     const linkSource = `data:application/pdf;base64,${pdfBase64}`;
     const downloadLink = document.createElement("a");

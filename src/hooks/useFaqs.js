@@ -5,7 +5,7 @@ import { FAQ_DASHBOARD_SERVER_ENDPOINT } from "../constants/serverApi";
 
 export const useFaqs = () => {
   const [faqs, setFaqs] = useState([]);
-  const [audios, setAudios] = useState([]);
+  //const [audios, setAudios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useAuthContext();
@@ -17,11 +17,11 @@ export const useFaqs = () => {
       try {
         const res = await axios.get(`${FAQ_DASHBOARD_SERVER_ENDPOINT}?agentId=${user.agentId}`, {
           headers: {
-            Authorization: `Bearer ${user.token}`, // 🔑 ajoute le token ici
+            Authorization: `Bearer ${user.token}`,
           },
         });
         setFaqs(res.data.faq.questions || []);
-        setAudios(res.data?.faq.audios || []);
+        //setAudios(res.data?.faq.audios || []);
 
       } catch (err) {
         setError(err.message || "Erreur lors du chargement des FAQs");
@@ -33,5 +33,5 @@ export const useFaqs = () => {
     fetchFaqs();
   }, [user?.agentId]);
 
-  return { faqs, loading, error , audios};
+  return { faqs, loading, error };
 };

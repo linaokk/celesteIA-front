@@ -19,9 +19,7 @@ export const useLogin = () => {
                 setError(json.error);
             }
     if(response.ok){
-                // Sauvegarder l'utilisateur dans le local storage
                 localStorage.setItem('user', JSON.stringify(json));
-                // Mettre à jour le contexte global
                 dispatch({type: 'LOGIN', payload: json});
                 setIsLoading(false);
             }

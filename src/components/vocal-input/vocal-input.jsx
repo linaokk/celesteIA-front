@@ -1,22 +1,36 @@
+// ...existing code...
 import React, { useState, useRef } from "react";
-import "./vocal-input.css"; 
-import { useFaqs } from "../../hooks/useFaqs";
+import "./vocal-input.css";
 
-const Vocals = () => {
-  const { audios, loading, error } = useFaqs();
+const Vocals = ({ audios = [], loading = false, error = null }) => {
   const [playingIndex, setPlayingIndex] = useState(null);
   const audioRefs = useRef([]);
 
   // Pagination
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 4;
+
+  if (loading) return <p>Chargement...</p>;
+  if (error) return <p>{error}</p>;
+
+  const agentAudios = audios[0]?.audios || [];
+
+  // Calcul des audios pour la page courante
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  const currentAudios = agentAudios.slice(startIndex, endIndex);
+  const totalPages = Math.max(1, Math.ceil(agentAudios.length / itemsPerPage));
+
   const handlePlayPause = async (index) => {
     const currentAudio = audioRefs.current[index];
     if (!currentAudio) return;
 
-    // Pause tous les autres audios
-    audioRefs.current.forEach((audio, i) => {
-      if (audio && i !== index) audio.pause();
+    // stop other audios
+    audioRefs.current.forEach((a, i) => {
+      if (a && i !== index) {
+        a.pause();
+        a.currentTime = 0;
+      }
     });
 
     try {
@@ -28,20 +42,11 @@ const Vocals = () => {
         setPlayingIndex(index);
       }
     } catch (err) {
-      console.log("Impossible de jouer l'audio : ", err);
+      console.error("Audio play error:", err);
     }
   };
 
-  if (loading) return <p>Chargement...</p>;
-  if (error) return <p>{error}</p>;
-
-  // Calcul des audios pour la page courante
-  const startIndex = (currentPage - 1) * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
-  const currentAudios = audios.slice(startIndex, endIndex);
-  const totalPages = Math.ceil(audios.length / itemsPerPage);
-
-  return (
+   return (
     <div className="vocals gap-3 mx-3 my-5 border-custom">
       {/* Header */}
       <div className="head mx-3 my-5 d-flex justify-content-between align-items-center">
@@ -165,3 +170,4 @@ const Vocals = () => {
 };
 
 export default Vocals;
+// ...existing code...

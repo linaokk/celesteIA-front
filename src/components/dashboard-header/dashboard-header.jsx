@@ -1,16 +1,12 @@
-import React from "react";
 import "./dashboard-header.css";
 import { useAuthContext } from "../../hooks/useAuthContext";
-import { useLogout } from "../../hooks/useLogout"; // ajuste le chemin si besoin
+import { useLogout } from "../../hooks/useLogout";
 
 const HeaderNav = () => {
   const { user } = useAuthContext();
   const { logout } = useLogout();
 
-  // Debug: log user data to see the structure
-  console.log('User data in header:', user);
 
-  // Try different possible field names for company name
   const companyName = user?.userCompanyName || "COMPANY NAME";
 
   return (

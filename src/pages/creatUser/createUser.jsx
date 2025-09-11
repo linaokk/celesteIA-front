@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import { SIGNUP_ENDPOINT } from "../../constants/serverApi";
 import { useSignup } from "../../hooks/useSignup";
 import { useLogout } from "../../hooks/useLogout";
 import "./creatUser.css";
@@ -31,49 +30,6 @@ const CreateUser = () => {
     logout();
   };
   return (
-    // <form className="create-user" onSubmit={handleSubmit}>
-    //     <h2>Créer un nouvel utilisateur</h2>
-
-    //     <label>Adresse e-mail :</label>
-    //     <input
-    //         type="email"
-    //         onChange={(e) => setEmail(e.target.value)}
-    //         value={email}
-    //         required
-    //     />
-
-    //     <label>Mot de passe :</label>
-    //     <input
-    //         type="password"
-    //         onChange={(e) => setPassword(e.target.value)}
-    //         value={password}
-    //         required
-    //     />
-
-    //     <label>Numéro de téléphone :</label>
-    //     <input
-    //         type="text"
-    //         onChange={(e) => setPhoneNumber(e.target.value)}
-    //         value={phoneNumber}
-    //         required
-    //     />
-
-    //     <label>Nom de l'entreprise :</label>
-    //     <input
-    //         type="text"
-    //         onChange={(e) => setCompanyName(e.target.value)}
-    //         value={companyName}
-    //         required
-    //     />
-
-    //     <button disabled={isLoading}>
-    //         {isLoading ? 'Création en cours...' : 'Créer un utilisateur'}
-    //     </button>
-    //             <button onClick={handleLogout}>
-    //         logout
-    //     </button>
-    //     {error && <div className="error">{error}</div>}
-    // </form>
     <div className="login-page">
       <div className="card login-card p-4 bg-glass">
         <div className="text-center mb-4">
