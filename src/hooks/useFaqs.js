@@ -5,6 +5,7 @@ import { FAQ_DASHBOARD_SERVER_ENDPOINT } from "../constants/serverApi";
 
 export const useFaqs = () => {
   const [faqs, setFaqs] = useState([]);
+  const [audios, setAudios] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const { user } = useAuthContext();
@@ -20,6 +21,8 @@ export const useFaqs = () => {
           },
         });
         setFaqs(res.data.faq.questions || []);
+        setAudios(res.data?.faq.audios || []);
+
       } catch (err) {
         setError(err.message || "Erreur lors du chargement des FAQs");
       } finally {
@@ -30,5 +33,5 @@ export const useFaqs = () => {
     fetchFaqs();
   }, [user?.agentId]);
 
-  return { faqs, loading, error };
+  return { faqs, loading, error , audios};
 };

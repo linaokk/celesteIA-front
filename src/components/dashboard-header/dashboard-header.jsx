@@ -1,9 +1,11 @@
 import React from "react";
 import "./dashboard-header.css";
 import { useAuthContext } from "../../hooks/useAuthContext";
+import { useLogout } from "../../hooks/useLogout"; // ajuste le chemin si besoin
 
 const HeaderNav = () => {
   const { user } = useAuthContext();
+  const { logout } = useLogout();
 
   // Debug: log user data to see the structure
   console.log('User data in header:', user);
@@ -36,10 +38,10 @@ const HeaderNav = () => {
           </small>
         </div>
         <div className="d-flex align-items-center gap-4">
-          <button className="btn-export">
+          <button className="btn-export" onClick={logout}>
             <div className="content">
               <i className="bi bi-box-arrow-right me-1"></i>
-              <span>Logout</span>
+              <span>Se deconnecter</span>
             </div>
             <i className="bi bi-box-arrow-right me-1"></i>
           </button>
