@@ -168,12 +168,16 @@ const CreateUser = () => {
           </button>
         </form>
 
-        <p className="text-center mt-3 mb-0 small text-white opacity-75">
-          Already have an account?{" "}
-          <a href="#" className="text-decoration-none main-color fw-bold">
-            Sign in
-          </a>
-        </p>
+<p className="text-center mt-3 mb-0 small text-white opacity-75">
+  Don't have an account?{" "}
+  <span
+    onClick={() => navigate("/login")}
+    className="text-decoration-none main-color fw-bold"
+    style={{ cursor: "pointer" }}
+  >
+    Sign in
+  </span>
+</p>
       </div>
     </div>
   );

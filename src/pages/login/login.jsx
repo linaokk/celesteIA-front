@@ -133,12 +133,16 @@ const Login = () => {
           </div>
         )} */}
 
-        <p className="text-center mt-3 mb-0 small text-white opacity-75">
-          Don't have an account?{" "}
-          <a href="#" className="text-decoration-none main-color fw-bold">
-            Sign up
-          </a>
-        </p>
+<p className="text-center mt-3 mb-0 small text-white opacity-75">
+  Don't have an account?{" "}
+  <span
+    onClick={() => navigate("/")}
+    className="text-decoration-none main-color fw-bold"
+    style={{ cursor: "pointer" }}
+  >
+    Sign up
+  </span>
+</p>
       </div>
     </div>
   );
